@@ -14,7 +14,7 @@ import java.util.List;
 
 @RequestMapping(value = "/api")
 @RestController
-public class UserController {
+public class AppController {
 
     // Wow look a repo!
 
@@ -61,7 +61,7 @@ public class UserController {
 
     // Could live in a DAO
 
-    @RequestMapping("{User}/books")
+    @RequestMapping("/loans/{User}")
     public List<Book> getBooksOnLoanToUser(@PathVariable("User") String userID){
         List<Book> books = new ArrayList<>();
         if(userID != null && !userID.equals("")) {
