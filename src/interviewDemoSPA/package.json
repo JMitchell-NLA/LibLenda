@@ -17,12 +17,8 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "i": "^0.3.6",
     "install": "^0.12.1",
-    "lodash": "^4.17.10",
-    "nouislider": "^12.0.0",
-    "npm": "^6.1.0",
-    "oidc-client": "^1.5.2-beta.1",
+    "npm": "^6.9.0",
     "vue": "^2.5.11",
-    "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1",
     "vue2-animate": "^2.0.0"
   },
