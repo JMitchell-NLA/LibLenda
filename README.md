@@ -11,6 +11,7 @@ from pom.xml directory
 OR 
 
 `mvn clean package`
+
 `java -jar ./target/interviewDemo-0.0.1-SNAPSHOT.jar`
 
 
