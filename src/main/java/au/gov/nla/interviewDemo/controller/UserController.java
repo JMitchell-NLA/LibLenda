@@ -28,7 +28,7 @@ public class UserController {
     BookRepository bookRepository;
 
     @RequestMapping(value="/users", method= RequestMethod.GET)
-    List<User> findAllUsers(@RequestParam(name = "email",required = false) String email){
+    public List<User> findAllUsers(@RequestParam(name = "email",required = false) String email){
        List<User> users = new ArrayList<>();
        if(email==null || email.equals("")){
            Iterable<User> results = this.userRepository.findAll();
@@ -45,7 +45,7 @@ public class UserController {
 
     //optional feature  .. This was a lot of boiler plate to replace.
     @RequestMapping(value="/books", method= RequestMethod.GET)
-    List<Book> findAllBooks(@RequestParam(name = "isbn",required = false) String isbn){
+    public List<Book> findAllBooks(@RequestParam(name = "isbn",required = false) String isbn){
         List<Book> books = new ArrayList<>();
         if(isbn==null || isbn.equals("")){
             Iterable<Book> results = this.bookRepository.findAll();
@@ -59,11 +59,14 @@ public class UserController {
         return books;
     }
 
+    // Could live in a DAO
+
     @RequestMapping("{User}/books")
-    List<Book> getBooksOnLoanToUser(@PathVariable("User") String userID){
+    public List<Book> getBooksOnLoanToUser(@PathVariable("User") String userID){
         List<Book> books = new ArrayList<>();
         if(userID != null && !userID.equals("")) {
-            Iterable<Loan> results = this.loanRepository.findAllByUser(userID);
+            long id = Long.parseLong(userID);
+            Iterable<Loan> results = this.loanRepository.findAllByUser(userRepository.findById(id));
             results.forEach(loan -> books.add(loan.getBook()));
         }
         return books;
