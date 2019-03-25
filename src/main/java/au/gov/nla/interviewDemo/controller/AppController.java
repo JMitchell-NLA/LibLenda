@@ -16,8 +16,6 @@ import java.util.List;
 @RestController
 public class AppController {
 
-    // Wow look a repo!
-
     @Autowired
     private UserRepository userRepository;
 
@@ -32,7 +30,7 @@ public class AppController {
        List<User> users = new ArrayList<>();
        if(email==null || email.equals("")){
            Iterable<User> results = this.userRepository.findAll();
-           results.forEach(user -> users.add(user));  // I <3 arrow functions :)
+           results.forEach(user -> users.add(user));
        }else{
            User user = this.userRepository.findByEmail(email);
            if(user != null){
@@ -43,7 +41,6 @@ public class AppController {
     }
 
 
-    //optional feature  .. This was a lot of boiler plate to replace.
     @RequestMapping(value="/books", method= RequestMethod.GET)
     public List<Book> findAllBooks(@RequestParam(name = "isbn",required = false) String isbn){
         List<Book> books = new ArrayList<>();
@@ -59,7 +56,6 @@ public class AppController {
         return books;
     }
 
-    // Could live in a DAO
 
     @RequestMapping("/loans/{User}")
     public List<Book> getBooksOnLoanToUser(@PathVariable("User") String userID){
