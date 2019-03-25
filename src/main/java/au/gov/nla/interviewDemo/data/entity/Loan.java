@@ -2,6 +2,7 @@ package au.gov.nla.interviewDemo.data.entity;
 
 import javax.persistence.*;
 
+@Entity
 public class Loan {
     @Id
     @Column(name="LOAN_ID")
